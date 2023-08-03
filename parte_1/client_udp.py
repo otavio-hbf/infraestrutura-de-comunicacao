@@ -11,7 +11,7 @@ clientSocket.bind(('localhost', 3000))
 
 #-------------ENVIO DO ARQUIVO -------------------------------------
 
-file_src = "pikachuzera.png"
+file_src = "pikachuzera.png" #altere aqui para o nome (se estiver na pasta) ou caminho (se não estiver) do arquivo de interesse
 file = open(file_src, "rb")
 file_size = os.path.getsize(file_src)
 print(f"O tamanho do arquivo é : {file_size} bits")
