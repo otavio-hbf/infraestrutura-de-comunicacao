@@ -6,8 +6,6 @@ PORT = 5000
 dest = (HOST, PORT)
 
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-clientSocket.bind(('localhost', 3000))
-
 
 #-------------ENVIO DO ARQUIVO -------------------------------------
 
