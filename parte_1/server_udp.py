@@ -2,7 +2,7 @@ import socket
 from PIL import Image
 import os
 
-HOST = 'localhost'
+HOST = "127.0.0.1"
 PORT = 5000
 origin = (HOST, PORT)
 dest = (HOST, 3000)
@@ -18,6 +18,7 @@ file_bytes = b""
 
 file_name, clientAddress = serverSocket.recvfrom(1024) 
 file_name = file_name.decode()
+print(file_name)
 file_name = "received_"+file_name
 file = open(file_name, "wb")
 
@@ -39,13 +40,13 @@ file.close()
 
 #------DEVOLUCAO DO ARQUIVO----------------------------------------------------------
 file = open(file_name, "rb")
-serverSocket.sendto(file_name.encode(), dest) #Envia nome do arquivo
+serverSocket.sendto(file_name.encode(), clientAddress) #Envia nome do arquivo
 while True:
     file_data = file.read(1024)
     if not file_data :
-        serverSocket.sendto(b"<END>", dest) 
+        serverSocket.sendto(b"<END>", clientAddress) 
         break
-    serverSocket.sendto(file_data, dest)
+    serverSocket.sendto(file_data, clientAddress)
 
 file.close()
 serverSocket.close()
